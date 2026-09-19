@@ -570,6 +570,9 @@
     .contact-note a { color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
     .site-footer { padding: 28px 20px 110px; text-align: center; font-size: .82rem; opacity: .85; }
     .site-footer a { color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .share-row { margin-bottom: 14px; }
+    .copy-link { font: inherit; cursor: pointer; padding: 10px 22px; border-radius: 999px; border: 1px solid currentColor; background: transparent; color: inherit; font-weight: 700; }
+    .copy-link:hover { opacity: .8; }
   </style>
 </head>
 <body>
@@ -979,6 +982,7 @@
   </main>
 
   <footer class="site-footer">
+    <p class="share-row"><button class="copy-link" type="button" data-copy-link aria-live="polite">Copy site link</button></p>
     <p>Questions about the art or the business? <a href="mailto:artflowforever@gmail.com?subject=Artflow%20Forever%20question">Email artflowforever@gmail.com</a></p>
   </footer>
 
@@ -1044,6 +1048,28 @@
     closeButton.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', event => { if (event.target === lightbox) closeLightbox(); });
     addEventListener('keydown', event => { if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
+
+    const copyLinkButton = document.querySelector('[data-copy-link]');
+    copyLinkButton?.addEventListener('click', async () => {
+      const siteUrl = 'https://tinyurl.com/ArtflowForever';
+      const originalLabel = 'Copy site link';
+      const done = () => {
+        copyLinkButton.textContent = 'Copied!';
+        setTimeout(() => { copyLinkButton.textContent = originalLabel; }, 2000);
+      };
+      try {
+        await navigator.clipboard.writeText(siteUrl);
+        done();
+      } catch {
+        const field = document.createElement('textarea');
+        field.value = siteUrl;
+        document.body.appendChild(field);
+        field.select();
+        try { document.execCommand('copy'); } catch {}
+        field.remove();
+        done();
+      }
+    });
   </script>
 </body>
 </html>
