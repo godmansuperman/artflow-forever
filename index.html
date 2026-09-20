@@ -482,6 +482,24 @@
     }
     .story-note b { color: var(--green); font-size: 1.35rem; }
     .story-note p { margin: 0; font-size: .94rem; }
+    .artist-portrait {
+      float: right;
+      width: 210px;
+      margin: 6px 0 20px 24px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      background: #111;
+    }
+    .artist-portrait img { display: block; width: 100%; height: auto; }
+    .artist-portrait figcaption {
+      padding: 10px 12px 12px;
+      font-size: .8rem;
+      text-align: center;
+      color: var(--muted);
+      letter-spacing: .02em;
+    }
     .story-stack { position: relative; min-height: 540px; }
     .stack-img {
       position: absolute;
@@ -543,6 +561,7 @@
       .story-copy { text-align: center; }
       .story-copy p { margin-left: auto; margin-right: auto; }
       .story-note { text-align: left; }
+      .artist-portrait { float: none; width: 168px; margin: 0 auto 22px; }
     }
     @media (max-width: 540px) {
       .page { padding-inline: 15px; }
@@ -983,6 +1002,10 @@
     <section class="page" id="artist" aria-labelledby="artist-title">
       <div class="story-grid">
         <div class="story-copy">
+          <figure class="artist-portrait">
+            <img src="artist/michael-adam-king.jpg" alt="Portrait of Michael &ldquo;Adam&rdquo; King" loading="lazy" />
+            <figcaption>Michael &ldquo;Adam&rdquo; King</figcaption>
+          </figure>
           <p class="eyebrow">Greetings From The Artist</p>
           <h2 id="artist-title">Michael &ldquo;Adam&rdquo; King</h2>
           <p>My name is Michael &ldquo;Adam&rdquo; King, and I have been creating digital art for about eight years. What began as a personal passion has grown, piece by piece, into the collection you see here today.</p>
